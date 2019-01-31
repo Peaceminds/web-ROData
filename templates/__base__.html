@@ -1,0 +1,85 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Stict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-
+strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang = "zh-CN">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    {% block meta %}<!-- block meta  --><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">{% endblock %}
+    <title>{% block title %} ? {% endblock %} - ROC</title>
+    <link rel="stylesheet" href="/static/css/uikit.min.css">
+    <link rel="stylesheet" href="/static/css/uikit.gradient.min.css">
+    <link rel="stylesheet" href="/static/css/awesome.css" />
+    <link rel="stylesheet" href="/static/css/components/notify.css" />
+    <link rel="stylesheet" href="/static/css/components/tooltip.css" />
+    <link rel="stylesheet" href="/static/css/main.css" />
+    <script src="/static/js/jquery.min.js"></script>
+    <script src="/static/bundle.js"></script>
+    <script src="/static/js/md5.js"></script>
+    <script src="/static/js/uikit.js"></script>
+    <script src="/static/js/vue.js"></script>
+    <script src="/static/js/awesome.js"></script>
+    <script src="/static/js/sticky.js"></script>
+    <script src="/static/js/notify.js"></script>
+    <script src="/static/js/components/grid.js"></script>
+    <script src="/static/js/tooltip.js"></script>
+    <script src="/static/main.js"></script>
+    <!--<script src="/static/js/node_modules/vue-validator/src/index.js"></script>-->
+    <!--<script src="/static/js/node_modules/vue-validator/dist/vue-validator.min.js"></script>-->
+    <script src="https://unpkg.com/vue-validator@2.1.7/dist/vue-validator.min.js"></script>
+    <style type="text/css">
+    </style>
+    {% block beforehead %}<!-- before head  -->{% endblock %}
+</head>
+
+<body>
+    <div class="uk-container uk-container-center uk-margin-top uk-margin-large-bottom">
+
+        <nav id="nav-main" class="uk-navbar">
+            <a class="uk-navbar-brand uk-hidden-small" href="/">RO CritCalcu</a>
+            <ul class="uk-navbar-nav uk-hidden-small">
+                <li data-url="index"><a href="/"><i class="uk-icon-home"></i> RO物理系暴击计算</a></li>
+                <!--<li data-url="history"><a href="/history"><i class="uk-icon-book"></i> 历史周报</a></li>-->
+                <!--<li data-url="manage"><a href="/manage"><i class="uk-icon-code"></i> 数据管理</a></li>-->
+            </ul>
+            <a href="#offcanvas" class="uk-navbar-toggle uk-visible-small" data-uk-offcanvas=""></a>
+            <div class="uk-navbar-brand uk-navbar-center uk-visible-small">Brand</div>
+        </nav>
+
+
+        {% block content %} {% endblock %}
+
+        <div id="offcanvas" class="uk-offcanvas">
+            <div class="uk-offcanvas-bar">
+                <ul class="uk-nav uk-nav-offcanvas">
+                    <li>
+                        <a href="http://www.getuikit.net/docs/layouts_frontpage.html">Week</a>
+                    </li>
+                    <li>
+                        <a href="http://www.getuikit.net/docs/layouts_portfolio.html">History</a>
+                    </li>
+                    <li>
+                        <a href="http://www.getuikit.net/docs/layouts_blog.html">Edit</a>
+                    </li>
+                </ul>·
+            </div>
+        </div>
+
+    </div>
+
+    <div class="uk-margin-large-top" style="background-color:#eee; border-top:1px solid #ccc;">
+        <div class="uk-container uk-container-center uk-text-center">
+            <div class="uk-panel uk-margin-top uk-margin-bottom">
+                <p>
+                    <a target="_blank" href="http://weibo.com/aimc" class="uk-icon-button uk-icon-weibo"></a>
+                    <a target="_blank" href="" class="uk-icon-button uk-icon-github"></a>
+                </p>
+                <p>Powered by <a href="">uikit & vue.js</a>. Copyright &copy; 2017.</p>
+                <p><a href="https://github.com">Peaceminds</a>. All rights reserved.</p>
+                <a target="_blank" href="http://www.w3.org/TR/html5/"><i class="uk-icon-html5" style="font-size:64px; color: #444;"></i></a>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

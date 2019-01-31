@@ -1,0 +1,149 @@
+{% extends '__base__.html' %}
+
+{% block title %}CritCal{% endblock %}
+{% block beforehead %}
+{% endblock%}
+{% block content %}
+<script>
+var f01,f02,f03,f04,f05,f06,f07,f08,f09,f10,f11,re
+</script>
+
+<div class="uk-container uk-container-center" style="background-image:url(../static/bk2.jpg); background-repeat:no-repeat;">
+
+    <div id="app" class="uk-grid" id="curr_week">
+        <div class="uk-width-1-1">
+
+            <div class="uk-text-center">
+                <h1 class="uk-heading-large uk-margin-bottom" style="margin-top: 130px">填写人物属性参数以计算</h1>
+                <p>选定/输入数值后可直接查看结果</p>
+            </div>
+
+            <!-- <hr class="uk-width-medium-1-6 uk-grid-divider uk-text-center-medium"> -->
+
+            <div class="uk-width-medium-1-1 uk-margin-large-top">
+                <validator name="validation1">
+                <form class="uk-form uk-grid" novalidate data-uk-grid-margin>
+
+                    <div class="uk-width-medium-1-6 uk-row-first">
+                    <label for="f01">装备攻击:</label>
+                    <input class="form1" id="f01" v-model="f01" v-validate:f01="['required']" placeholder="装备攻击力"
+                            data-uk-tooltip title="装备标明的攻击力之和，含武器、饰品。包括卡片攻击，强化攻击，附魔攻击"/>
+                    </div>
+
+                    <div class="uk-width-medium-1-6 uk-row-">
+                    <label for="f02">人物等级:</label>
+                    <input class="form1" id="f02" placeholder="等级" v-model="f02"
+                            data-uk-tooltip title="人物base等级"/>
+                    </div>
+
+                    <div class="uk-width-medium-1-6">
+                    <label for="f03">精炼物攻:</label>
+                    <input class="form1" id="f03" placeholder="精炼物攻" v-model="f03"
+                            data-uk-tooltip title="总精炼物攻"/>
+                    </div>
+
+                    <div class="uk-width-medium-1-6">
+                    <label for="f04">物攻加成:</label>
+                    <input class="form1" id="f04" placeholder="物攻加成" v-model="f04"
+                           data-uk-tooltip title="例如，箭袋加成7%远程物攻，此处填写107"/>
+                    </div>
+
+                    <div class="uk-width-medium-1-6">
+                    <label for="f05">属性修正:</label>
+                    <input class="form1" id="f05" placeholder="属性修正" v-model="f05"
+                           data-uk-tooltip title="针对某一元素的额外加伤，例如对土属性加伤5%，这里填写105。"/>
+                    </div>
+
+                    <div class="uk-width-medium-1-6">
+                    <label for="f06">属性克制:</label>
+                    <input class="form1" id="f06" placeholder="属性克制" v-model="f06"
+                           data-uk-tooltip title="默认无属性时填写100，属性克制1.5倍伤害时填写150。"/>
+                    </div>
+
+                    <div class="uk-width-medium-1-6">
+                    <label for="f07">体型修正:</label>
+                    <input class="form1" id="f07" placeholder="体型修正" v-model="f07"
+                           data-uk-tooltip title="默认中型时填写100，中型加伤25%时填写125。"/>
+                    </div>
+
+                    <div class="uk-width-medium-1-6">
+                    <label for="f08">素质攻击:</label>
+                    <input class="form1" id="f08" placeholder="素质攻击力" v-model="f08"
+                           data-uk-tooltip title="卸下所有装备后的裸攻"/>
+                    </div>
+
+                    <div class="uk-width-medium-1-6">
+                    <label for="f09">物伤加成:</label>
+                    <input class="form1" id="f09" placeholder="物伤加成" v-model="f09"
+                           data-uk-tooltip title="物伤加成为5%，则此处填写105"/>
+                    </div>
+
+                    <div class="uk-width-medium-1-6">
+                    <label for="f10">暴伤加成:</label>
+                    <input class="form1" id="f10" placeholder="暴伤加成" v-model="f10"
+                           data-uk-tooltip title="暴伤加成为5%，则此处填写105"/>
+                    </div>
+
+                    <div class="uk-width-medium-1-6">
+                    <label for="f11">种族修正:</label>
+                    <input class="form1" id="f11" placeholder="种族修正" v-model="f11"
+                           data-uk-tooltip title="种族加伤为5%，则此处填写105"/>
+                    </div>
+
+                    <hr class="uk-width-medium-1-1 uk-grid-divider uk-text-center-medium">
+
+                    <div class="uk-text-center" style="margin-top: 50px">
+                        <input type="submit" value="send" v-show="$validation1.valid">
+                        <div class="errors">
+                            <p v-if="$validation1.f01.required">Required your name.</p>
+                        </div>
+                        <p>最终伤害数值：</p><input class="form01" placeholder="最终结果" v-model="re"/>
+                    </div>
+
+                </form>
+                </validator>
+            </div>
+
+            <div class="uk-width-medium-1-1 uk-margin-large-top uk-margin-large-bottom uk-text-center">
+            <!--<a v-on:click="rst" class="uk-button uk-button-primary uk-margin-large-bottom" data-pos="top-center">计算结果并拷贝</a>-->
+                <button class="btn btn-success btn-block" type="submit">提交</button>
+            </div>
+
+
+
+        </div>
+    </div>
+
+</div>
+
+
+
+<script>
+<!--var f01,f02,f03,f04,f05,f06,f07,f08,f09,f10,f11,re-->
+var vm = new Vue({
+    el: '#app',
+    data: {
+        f01,f02,f03,f04,f05,f06,f07,f08,f09,f10,f11,re
+    },
+    methods: {
+        rst: function(event) {
+            vm.f01 = parseInt(vm.f01);
+            vm.f02 = parseInt(vm.f02);
+            vm.f03 = parseInt(vm.f03);
+            vm.f04 = parseInt(vm.f04);
+            vm.f05 = parseInt(vm.f05);
+            vm.f06 = parseInt(vm.f06);
+            vm.f07 = parseInt(vm.f07);
+            vm.f08 = parseInt(vm.f08);
+            vm.f09 = parseInt(vm.f09);
+            vm.f10 = parseInt(vm.f10);
+            vm.f11 = parseInt(vm.f11);
+            vm.re = ((((vm.f01 + vm.f02 * 4 + vm.f03) * vm.f04 * 0.01 * vm.f05 * 0.01 * vm.f06 * 0.01 * vm.f07 * 0.01) + vm.f08) * vm.f09 * 0.01 * vm.f10 * 0.01 * vm.f11 * 0.01) / 2 + vm.f03;
+            console.log('print re', vm.re);
+        }
+    }
+})
+
+</script>
+
+{% endblock %}
